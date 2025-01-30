@@ -1,29 +1,17 @@
-# Cam-Hackers
+> [!IMPORTANT]
+antes de usar el script, ejecutar el comando:
 
-Hack Cameras
+`pip install -r requirements.txt`
 
-<h3> Mode Of Execution: </h3>
+## Descripcion:
+bifurcación del repositorio: `https://github.com/AngelSecurityTeam/Cam-Hackers`
 
-* apt-get install python3
+*se cambiaron ciertos aspectos del codigo para adaptarlo a necesidades y gusto propios
 
-* apt-get install git
+### Proposito del script
 
-* git clone https://github.com/AngelSecurityTeam/Cam-Hackers
+recopilar informacion de camaras de seguridad mayormente sin contraseñas segun el pais
 
-* pip3 install requests
+### Ejecución:
 
-* cd Cam-Hackers
-
-* python3 cam-hackers.py
-
-# CAM-HACKERS
-
-<img src="https://github.com/AngelSecurityTeam/Cam-Hackers/blob/master/camfoto.png">
-
-# CAM-HACKERS
-
-<img src="https://github.com/AngelSecurityTeam/Cam-Hackers/blob/master/camfoto2.png">
-
-<h3> Paypal donations: </h3>
-
-* https://www.paypal.me/AngelSecurityTeam
+python cam-hackers.py
