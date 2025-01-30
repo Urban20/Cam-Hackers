@@ -29,14 +29,14 @@ headers["User-Agent"] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/5
 ejecucion = True
 contenido = ''
 
-logo ="""
-\033[1;31m\033[1;37m ██████╗ █████╗ ███╗   ███╗      ██╗  ██╗ █████╗  ██████╗██╗  ██╗███████╗██████╗ ███████╗
-██╔════╝██╔══██╗████╗ ████║      ██║  ██║██╔══██╗██╔════╝██║ ██╔╝██╔════╝██╔══██╗██╔════╝
-██║     ███████║██╔████╔██║█████╗███████║███████║██║     █████╔╝ █████╗  ██████╔╝███████╗
-██║     ██╔══██║██║╚██╔╝██║╚════╝██╔══██║██╔══██║██║     ██╔═██╗ ██╔══╝  ██╔══██╗╚════██║
-╚██████╗██║  ██║██║ ╚═╝ ██║      ██║  ██║██║  ██║╚██████╗██║  ██╗███████╗██║  ██║███████║
-\033[1;31m ╚═════╝╚═╝  ╚═╝╚═╝     ╚═╝      ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚══════╝
-\033[1;31m                  bifurcación de URB@N                ANGELSECURITYTEAM \033[1;31m\033[1;37m\r\n"""
+logo ="""\033[1;31m\033[1;37m  ██████╗ █████╗ ███╗   ███╗      ██╗  ██╗ █████╗  ██████╗██╗  ██╗███████╗██████╗ ███████╗
+ ██╔════╝██╔══██╗████╗ ████║      ██║  ██║██╔══██╗██╔════╝██║ ██╔╝██╔════╝██╔══██╗██╔════╝
+ ██║     ███████║██╔████╔██║█████╗███████║███████║██║     █████╔╝ █████╗  ██████╔╝███████╗
+ ██║     ██╔══██║██║╚██╔╝██║╚════╝██╔══██║██╔══██║██║     ██╔═██╗ ██╔══╝  ██╔══██╗╚════██║
+\033[1;31m ╚██████╗██║  ██║██║ ╚═╝ ██║      ██║  ██║██║  ██║╚██████╗██║  ██╗███████╗██║  ██║███████║
+\033[1;35m  ╚═════╝╚═╝  ╚═╝╚═╝     ╚═╝      ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚══════╝
+\033[1;35m                  bifurcación de URB@N                ANGELSECURITYTEAM \033[1;31m\033[1;37m\r\n"""
+
 
 try:
     resp = requests.get(url, headers=headers)
@@ -44,7 +44,7 @@ try:
         data = resp.json()
         countries = data['countries']
         for key, value in countries.items():
-            contenido+=f'codigo : ({key}) - {value["country"]} / cantidad de camaras: ({value["count"]}) \r\n'
+            contenido+=f'\033[0m codigo : ({key}) - {value["country"]} / cantidad de camaras: ({value["count"]}) \r\n'
 
     else: ejecucion = False        
 except Exception as e:
@@ -61,7 +61,7 @@ def main():
     ips = []
     print(logo)
     print(contenido)
-    print(Fore.CYAN+'\nCTRL + C = salir del script\n')
+    print('\033[1;35m \nCTRL + C => salir del script\n')
 
     country = input(Fore.WHITE+"\ncodigo(##) >> ").strip()
     
@@ -84,25 +84,26 @@ def main():
             
                 print(Fore.RED+ip)
                 ips.append(ip)
-    else: raise KeyboardInterrupt
+    
 
-    save = str(input(Fore.WHITE+'\n[0] guardar resultados >> ')).strip()
+        save = str(input(Fore.WHITE+'\n[0] guardar resultados >> ')).strip()
 
-    if save == '0':
-        
-        for ip in ips:
-            guardar(titulo=country,ip=ip)
+        if save == '0':
+            
+            for ip in ips:
+                guardar(titulo=country,ip=ip)
 
-        print(Fore.GREEN+'\narchivo guardado exitosamente'+country+'.txt\n')
+            print(Fore.GREEN+'\narchivo guardado exitosamente'+country+'.txt\n')
 
-    else: print(Fore.RED+'\narchivo no guardado\n')
+        else: print(Fore.RED+'\narchivo no guardado\n')
+
     sleep(2)
-
     os.system(comando)
 
 while ejecucion:
     try:
         main()
+    
     except KeyboardInterrupt:
         ejecucion = False
         exit(1)
