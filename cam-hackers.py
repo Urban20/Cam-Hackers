@@ -73,6 +73,8 @@ def main():
     if res.status_code == 200:
         last_page = re.findall(r'pagenavigator\("\?page=", (\d+)', res.text)[0]
 
+        print(f'\n\033[1;37m\npais seleccionado:\033[1;31m {data['countries'][country.upper()]['country']}\n')
+
         for page in range(int(last_page)):
             res = requests.get(
                 f"http://www.insecam.org/en/bycountry/{country}/?page={page}",
@@ -82,7 +84,7 @@ def main():
 
             for ip in encontrar:
             
-                print(Fore.RED+ip)
+                print(f'{Fore.WHITE+ip}\n')
                 ips.append(ip)
     
 
